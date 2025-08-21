@@ -1,12 +1,21 @@
 from processor import Processor
-from fetcher import CRUD
+from fetcher import DAL
 import pandas as pd
 
-
 class DataProcessing:
-    def __init__(self,data):
-        self.data = pd.DataFrame(data)
 
+
+    def __init__(self):
+        self.dataframe = Processor(pd.DataFrame(DAL.read(self)))
 
     def activate(self):
-        self.data = self.data
+        self.dataframe = self.dataframe.find_rarest_word()
+        self.dataframe = self.dataframe.find_sentiment_word()
+        self.dataframe = self.dataframe.detected_weapons()
+        return self.dataframe
+
+
+
+d = DataProcessing()
+
+print(d)

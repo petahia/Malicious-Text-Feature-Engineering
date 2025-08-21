@@ -24,9 +24,13 @@ class Processor:
         self.dataframe['sentiment'] = self.dataframe['Text'].apply(sentiment)
         return self.dataframe
 
+
+# דרוש תיקון
     def detected_weapons(self):
         with open('file:/Users/petahiam/PycharmProjects/malicious_text_eng./data/weapon_list.txt','r') as file:
             rows = [row for row in file.readline()]
+        return rows
+
 
 
 
