@@ -27,9 +27,14 @@ class Processor:
 
 # דרוש תיקון
     def detected_weapons(self):
-        with open('file:/Users/petahiam/PycharmProjects/malicious_text_eng./data/weapon_list.txt','r') as file:
-            rows = [row for row in file.readline()]
-        return rows
+        def weapons(text):
+            with open('file:/Users/petahiam/PycharmProjects/malicious_text_eng./data/weapon_list.txt','r') as file:
+                rows = [row for row in file.readline()]
+                for i in text:
+                    if i in rows:
+                        return i
+        self.dataframe['sentiment'] = self.dataframe['Text'].apply(weapons)
+        return self.dataframe
 
 
 

@@ -6,7 +6,7 @@ app = FastAPI()
 
 @app.get('/get_data')
 def get_json_of_data():
-    return DataProcessing().activate().to_json()
+    return DataProcessing().activate().to_dict()
 
 
 
