@@ -1,8 +1,5 @@
-os
 pymongo
 nltk
-dotenv
-Counter
 fastapi
 uvicorn
 pandas
