@@ -1,5 +1,6 @@
 from collections import Counter
 import nltk
+from nltk.corpus import words
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 class Processor:
@@ -27,12 +28,14 @@ class Processor:
 
     def detected_weapons(self):
         def weapons(text):
-            with open('file:/Users/petahiam/PycharmProjects/malicious_text_eng./data/weapon_list.txt','r') as file:
-                rows = [row for row in file.readline()]
-                for i in text:
-                    if i in rows:
-                        return i
-        self.dataframe['sentiment'] = self.dataframe['Text'].apply(weapons)
+            with open('/Users/petahiam/PycharmProjects/malicious_text_eng./data/weapon_list.txt', 'r') as file:
+                rows = [row for row in file.readlines()]
+                words = text.split()
+                for word in words:
+                    if word in rows:
+                        return word
+                return None
+        self.dataframe['weapon_detected'] = self.dataframe['Text'].apply(weapons)
         return self.dataframe
 
 

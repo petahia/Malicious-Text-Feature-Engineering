@@ -4,16 +4,17 @@ import pandas as pd
 
 class DataProcessing:
     def __init__(self):
-        dal = DAL()
-        self.dataframe = Processor(pd.DataFrame(dal.read()))
+        self.dal = DAL()
+        data = list(self.dal.read())
+        self.dataframe = pd.DataFrame(data)
+        self.processor = Processor((self.dataframe))
 
     def activate(self):
-        self.dataframe = self.dataframe.find_rarest_word()
-        self.dataframe = self.dataframe.find_sentiment_word()
-        self.dataframe = self.dataframe.detected_weapons()
+        self.dataframe = self.processor.find_rarest_word()
+        self.dataframe = self.processor.find_sentiment_word()
+        self.dataframe = self.processor.detected_weapons()
         return self.dataframe
 
 
 
 
-print(d.to_dict())
