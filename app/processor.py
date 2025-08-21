@@ -25,7 +25,6 @@ class Processor:
         return self.dataframe
 
 
-# דרוש תיקון
     def detected_weapons(self):
         def weapons(text):
             with open('file:/Users/petahiam/PycharmProjects/malicious_text_eng./data/weapon_list.txt','r') as file:
